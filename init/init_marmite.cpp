@@ -28,10 +28,12 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <sys/sysinfo.h>
-
+#include <cstdlib>
+#include <unistd.h>
 #include <fcntl.h>
-#include <stdlib.h>
+#include <string>
+
+#include <sys/sysinfo.h>
 
 #include "vendor_init.h"
 #include "property_service.h"
@@ -119,20 +121,6 @@ void check_device()
 void load_marmite() {
     property_set("ro.sf.lcd_density", "320");
     property_set("ro.media.maxmem", "10590068224");
-
-    // Audio (based on UK website wileyfox)
-    //Based on: https://github.com/CyanogenMod/android_hardware_qcom_audio/commit/f6cfe88a8959aacbb0d1782265d4fba52c8854da
-    property_set("ro.audio.customplatform", "AW87319");
-    //taked from Nextbit Robin (ether)
-    property_set("audio.acdb.name", "AW87319");
-    // shamrock (msm8952)
-    property_set("persist.audio.calfile0", "/etc/acdbdata/AW87319/AW87319_Bluetooth_cal.acdb");
-    property_set("persist.audio.calfile1", "/etc/acdbdata/AW87319/AW87319_General_cal.acdb");
-    property_set("persist.audio.calfile2", "/etc/acdbdata/AW87319/AW87319_Global_cal.acdb");
-    property_set("persist.audio.calfile3", "/etc/acdbdata/AW87319/AW87319_Handset_cal.acdb");
-    property_set("persist.audio.calfile4", "/etc/acdbdata/AW87319/AW87319_Hdmi_cal.acdb");
-    property_set("persist.audio.calfile5", "/etc/acdbdata/AW87319/AW87319_Headset_cal.acdb");
-    property_set("persist.audio.calfile6", "/etc/acdbdata/AW87319/AW87319_Speaker_cal.acdb");
 }
 
 /* Wileyfox Swift 2 Plus */
@@ -143,25 +131,12 @@ void load_marmitePlus() {
 /* Wileyfox Swift 2X*/
 void load_marmiteX() {
     property_set("ro.sf.lcd_density", "440");
-
-    // Audio (based on UK website wileyfox)
     //Based on: https://github.com/CyanogenMod/android_hardware_qcom_audio/commit/f6cfe88a8959aacbb0d1782265d4fba52c8854da
     property_set("ro.audio.customplatform", "AW87319");
-    //taked from Nextbit Robin (ether)
-    property_set("audio.acdb.name", "AW87319");
-    // shamrock (msm8952)
-    property_set("persist.audio.calfile0", "/etc/acdbdata/AW87319/AW87319_Bluetooth_cal.acdb");
-    property_set("persist.audio.calfile1", "/etc/acdbdata/AW87319/AW87319_General_cal.acdb");
-    property_set("persist.audio.calfile2", "/etc/acdbdata/AW87319/AW87319_Global_cal.acdb");
-    property_set("persist.audio.calfile3", "/etc/acdbdata/AW87319/AW87319_Handset_cal.acdb");
-    property_set("persist.audio.calfile4", "/etc/acdbdata/AW87319/AW87319_Hdmi_cal.acdb");
-    property_set("persist.audio.calfile5", "/etc/acdbdata/AW87319/AW87319_Headset_cal.acdb");
-    property_set("persist.audio.calfile6", "/etc/acdbdata/AW87319/AW87319_Speaker_cal.acdb");
 }
 
 void vendor_load_properties()
 {
-    char cmv[PROP_VALUE_MAX];
     check_device();
 
     property_set("dalvik.vm.heapstartsize", heapstartsize);
@@ -172,15 +147,17 @@ void vendor_load_properties()
     property_set("dalvik.vm.heapmaxfree", "8m");
 
     property_set("qemu.hw.mainkeys", "0");
-    property_get("ro.boot.cmv", cmv);
+    property_set("ro.audio.customplatform", "AW87319"); //test
 
-    if (!strcmp(cmv, "mv1")) {
+    std::string cmv = property_get("ro.boot.cmv");
+
+    if (cmv == "mv1") {
         /* Swift 2 */
         load_marmite();
-    } else if (!strcmp(cmv, "mv2")){
+    } else if (cmv == "mv2"){
         /* Swift 2 Plus*/
         load_marmitePlus();
-    } else if (!strcmp(cmv, "mv3")) {
+    } else if (cmv == "mv3") {
         /* Swift 2X */
         load_marmiteX();
     }
