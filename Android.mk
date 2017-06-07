@@ -17,4 +17,7 @@ LOCAL_PATH := $(call my-dir)
 
 ifeq ($(TARGET_DEVICE),marmite)
 include $(call all-makefiles-under,$(LOCAL_PATH))
+
+include device/wileyfox/marmite/tftp.mk
+
 endif
