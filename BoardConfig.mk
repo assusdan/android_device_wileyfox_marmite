@@ -39,8 +39,8 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
-TARGET_USES_64_BIT_BINDER := true
 TARGET_CPU_CORTEX_A53 := true
+TARGET_USES_64_BIT_BINDER := true
 ENABLE_CPUSETS := true
 
 # Bootloader
@@ -95,7 +95,6 @@ AUDIO_FEATURE_ENABLED_KPI_OPTIMIZE := true
 AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
 
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
-#BOARD_USES_SEPERATED_AUDIO_INPUT := true
 BOARD_SUPPORTS_SOUND_TRIGGER := true
 BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
@@ -111,6 +110,7 @@ QCOM_BT_USE_SMD_TTY := true
 
 # Camera
 BOARD_CAMERA_SENSORS := ov8856 ov8865 s5k3l8 s5k3p3 s5k3p3_x50l
+TARGET_COMPILE_WITH_MSM_KERNEL := true
 BOARD_QTI_CAMERA_32BIT_ONLY := true
 BOARD_QTI_CAMERA_V2 := true
 TARGET_USE_VENDOR_CAMERA_EXT := true
@@ -141,7 +141,6 @@ endif
 WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
 
 # Display
-BOARD_EGL_CFG := $(DEVICE_PATH)/configs/egl.cfg
 # Shader cache config options
 # Maximum size of the  GLES Shaders that can be cached for reuse.
 # Increase the size if shaders of size greater than 12KB are used.
@@ -156,7 +155,6 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
-TARGET_USES_OVERLAY := true
 USE_OPENGL_RENDERER := true
 
 # Encryption
@@ -191,6 +189,9 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_marmite
 # Keymaster
 TARGET_PROVIDES_KEYMASTER := true
 
+# Malloc
+MALLOC_SVELTE := true
+
 # Lights (Based on https://github.com/DevelopedInside/android_kernel_wileyfox_msm8937/blob/android-wf-6.0/arch/arm64/configs/lineageos_marmite_defconfig#L3373-L3376)
 BOARD_LIGHTS_VARIANT := aw2013
 TARGET_PROVIDES_LIBLIGHT := true
@@ -222,7 +223,7 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 USE_SENSOR_MULTI_HAL := true
 
 # Wifi
-TARGET_PROVIDES_WCNSS_QMI := true
+#TARGET_PROVIDES_WCNSS_QMI := true
 TARGET_USES_QCOM_WCNSS_QMI := true
 TARGET_USES_WCNSS_CTRL := true
 

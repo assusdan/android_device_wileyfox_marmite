@@ -152,11 +152,14 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     camera.msm8937 \
-    libmm-qcamera
+    libmm-qcamera \
+	mm-qcamera-app
 
 # Camera configs
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/camera/camera_camera.xml:system/etc/camera/camera_camera.xml \
+    $(LOCAL_PATH)/configs/camera/csidtg_camera.xml:system/etc/camera/csidtg_camera.xml \
+    $(LOCAL_PATH)/configs/camera/csidtg_chromatix.xml:system/etc/camera/csidtg_chromatix.xml \
     $(LOCAL_PATH)/configs/camera/ov8856_chromatix.xml:system/etc/camera/ov8856_chromatix.xml \
     $(LOCAL_PATH)/configs/camera/ov8865_chromatix.xml:system/etc/camera/ov8865_chromatix.xml \
     $(LOCAL_PATH)/configs/camera/s5k3l8_chromatix.xml:system/etc/camera/s5k3l8_chromatix.xml \
@@ -176,7 +179,6 @@ PRODUCT_PACKAGES += \
     copybit.msm8937 \
     hwcomposer.msm8937 \
     memtrack.msm8937 \
-    liboverlay \
     libtinyxml
 
 # Data
@@ -220,7 +222,7 @@ PRODUCT_PACKAGES += \
     gps.msm8937 \
     libcurl \
     libgnsspps
-    
+
 # Init scripts
 PRODUCT_PACKAGES += \
     init.qcom.bt.sh
@@ -252,7 +254,8 @@ PRODUCT_PACKAGES += \
 # IPv6
 PRODUCT_PACKAGES += \
     ebtables \
-    ethertypes
+    ethertypes \
+    libebtc
 
 # IRSC
 PRODUCT_COPY_FILES += \
@@ -314,7 +317,9 @@ PRODUCT_COPY_FILES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    libmm-omxcore \
     libc2dcolorconvert \
+    libextmedia_jni \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
@@ -323,6 +328,11 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libstagefrighthw
+
+# Perf
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/perf/perf-profile0.conf:system/vendor/etc/perf-profile0.conf \
+    $(LOCAL_PATH)/configs/perf/perf-profile1.conf:system/vendor/etc/perf-profile1.conf
 
 # Power
 PRODUCT_PACKAGES += \
