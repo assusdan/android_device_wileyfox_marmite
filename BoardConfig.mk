@@ -16,7 +16,7 @@
 DEVICE_PATH := device/wileyfox/marmite
 
 # Ninja
-USE_NINJA := false
+# USE_NINJA := false
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := marmite,omni_marmite
