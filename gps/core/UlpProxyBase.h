@@ -104,7 +104,7 @@ public:
         (void)active;
         return false;
     }
-    inline virtual bool reportPositions(const struct FlpExtLocation_s* locations,
+    inline virtual bool reportPositions(const struct FlpExtLocation* locations,
                                         int32_t number_of_locations) {
         (void)locations;
         (void)number_of_locations;
