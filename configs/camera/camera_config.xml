@@ -189,7 +189,7 @@ LensInfo : Information of the lens present in the module.
     <ChromatixName>ov8865_chromatix</ChromatixName>
     <ModesSupported>1</ModesSupported>
     <Position>FRONT</Position>
-    <MountAngle>270</MountAngle>
+    <MountAngle>90</MountAngle>
     <CSIInfo>
       <CSIDCore>1</CSIDCore>
       <LaneMask>0x7</LaneMask>
