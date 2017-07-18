@@ -112,8 +112,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
-QCOM_BT_USE_BTNV := true
-QCOM_BT_USE_SMD_TTY := true
 
 # Camera
 BOARD_CAMERA_SENSORS := ov8856 ov8865 s5k3l8 s5k3p3 s5k3p3_x50l
@@ -122,8 +120,6 @@ BOARD_QTI_CAMERA_32BIT_ONLY := true
 BOARD_QTI_CAMERA_V2 := true
 TARGET_USE_VENDOR_CAMERA_EXT := true
 USE_DEVICE_SPECIFIC_CAMERA := true
-
-TARGET_USES_MEDIA_EXTENSIONS := true
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
@@ -198,7 +194,10 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_marmite
 TARGET_PROVIDES_KEYMASTER := true
 
 # Malloc
-MALLOC_SVELTE := true
+# MALLOC_SVELTE := true
+
+# Media Extensions
+TARGET_USES_MEDIA_EXTENSIONS := true
 
 # Lights (Based on https://github.com/DevelopedInside/android_kernel_wileyfox_msm8937/blob/android-wf-6.0/arch/arm64/configs/lineageos_marmite_defconfig#L3373-L3376)
 BOARD_LIGHTS_VARIANT := aw2013

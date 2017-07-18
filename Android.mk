@@ -36,6 +36,9 @@ $(LOCAL_BUILT_MODULE): WCNSS_BIN_SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/prim
 $(LOCAL_BUILT_MODULE): ACTUAL_DAT_FILE := /persist/WCNSS_wlan_dictionary.dat
 $(LOCAL_BUILT_MODULE): WCNSS_DAT_SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_wlan_dictionary.dat
 
+$(LOCAL_BUILT_MODULE): ACTUAL_PRONTO_FILE := /system/lib/modules/pronto/pronto_wlan.ko
+$(LOCAL_BUILT_MODULE): WLAN_KO_SYMLINK := $(TARGET_OUT)/lib/modules/wlan.ko
+
 $(LOCAL_BUILT_MODULE): $(LOCAL_PATH)/Android.mk
 $(LOCAL_BUILT_MODULE):
 	$(hide) echo "Making symlinks for wifi"
@@ -48,6 +51,8 @@ $(LOCAL_BUILT_MODULE):
 	$(hide) ln -sf $(ACTUAL_BIN_FILE) $(WCNSS_BIN_SYMLINK)
 	$(hide) rm -rf $(WCNSS_DAT_SYMLINK)
 	$(hide) ln -sf $(ACTUAL_DAT_FILE) $(WCNSS_DAT_SYMLINK)
+	$(hide) rm -rf $(WLAN_KO_SYMLINK)
+	$(hide) ln -sf $(ACTUAL_PRONTO_FILE) $(WLAN_KO_SYMLINK)
 	$(hide) touch $@
 
 IMS_LIBS := libimscamera_jni.so libimsmedia_jni.so
