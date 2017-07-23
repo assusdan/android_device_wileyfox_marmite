@@ -130,6 +130,7 @@ framework/ConnectivityExt.jar
 framework/cneapiclient.jar
 framework/com.quicinc.cne.jar
 -priv-app/CNEService/CNEService.apk
+
 vendor/lib/libcne.so
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneqmiutils.so
@@ -1239,8 +1240,8 @@ bin/cnss-daemon
 bin/cnss_diag
 bin/wcnss_service
 bin/fstman
-lib/modules/pronto/pronto_wlan.ko
-lib/modules/pronto/pronto_wlan.ko:lib/modules/wlan.ko
+#lib/modules/pronto/pronto_wlan.ko
+#lib/modules/pronto/pronto_wlan.ko:lib/modules/wlan.ko
 
 # ???
 #vendor/lib/hw/power.msm8937.so
